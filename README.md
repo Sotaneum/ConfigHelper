@@ -54,7 +54,6 @@ Can use it to save or recall preferences from Python.
 
    - Test Class
         ```python
-        from ConfigMaster import Config
         # Test Class
         class Test:
             def __init__(self):
@@ -63,6 +62,10 @@ Can use it to save or recall preferences from Python.
             
             def __str__(self):
                 return "name : {}, age : {}".format(self.name, self.age)
+        ```
+    - Import ConfigMaster
+        ```python
+        from ConfigMaster import Config
         ```
     - Config None Example
         ```python
