@@ -4,191 +4,191 @@ Can use it to save or recall preferences from Python.
  - Homepage : http://infolab.kunsan.ac.kr
  - How to install
     ```bash
-        pip install "http://duration.digimoon.net/pip/configmaster.whl"
+    pip install "http://duration.digimoon.net/pip/configmaster.whl"
     ```
     - Other version
         ```bash
-            # 0.0.1
-            pip install "http://duration.digimoon.net/pip/configmaster-0.0.1-cp36-none-any.whl"
-            
-            # 0.0.2
-            pip install "http://duration.digimoon.net/pip/configmaster-0.0.2-cp36-none-any.whl"
+        # 0.0.1
+        pip install "http://duration.digimoon.net/pip/configmaster-0.0.1-cp36-none-any.whl"
+
+        # 0.0.2
+        pip install "http://duration.digimoon.net/pip/configmaster-0.0.2-cp36-none-any.whl"
         ```
  - Functions
     ```python
-        config = ConfigMaster(data:dict)
-        config = ConfigMaster(path:str) # URL is not supported.
-        config = ConfigMaster(cls:type) # Class
-        config = ConfigMaster(obj) # is not None
+    config = ConfigMaster(data:dict)
+    config = ConfigMaster(path:str) # URL is not supported.
+    config = ConfigMaster(cls:type) # Class
+    config = ConfigMaster(obj) # is not None
 
-        # Returns the value.
-        def getValue(key:str):
-            return Value
+    # Returns the value.
+    def getValue(key:str):
+        return Value
 
-        # Modify or add new value. 
-        def setValue(key:str, value:object):
-            return None
+    # Modify or add new value. 
+    def setValue(key:str, value:object):
+        return None
 
-        # Create New Object. (Init Variable)
-        def newClass(cls:Class):
-            return Object
+    # Create New Object. (Init Variable)
+    def newClass(cls:Class):
+        return Object
 
-        # Put a value in Object
-        def setObject(obj:Object):
-            pass
+    # Put a value in Object
+    def setObject(obj:Object):
+        pass
 
-        # Return as "Dictionary".
-        def toDict():
-            return Dictionary
+    # Return as "Dictionary".
+    def toDict():
+        return Dictionary
 
-        # Return as "JSON".
-        def toJSON():
-            return String(=JSON)
+    # Return as "JSON".
+    def toJSON():
+        return String(=JSON)
 
-        # Return as "File".
-        def toFile(path:string):
-            return file
+    # Return as "File".
+    def toFile(path:string):
+        return file
     ```
 
  - How to use
 
    - Test Class
         ```python
-            from ConfigMaster import Config
-            # Test Class
-            class Test:
-                def __init__(self):
-                    self.name = "Donggun LEE"
-                    self.age = 24
-                
-                def __str__(self):
-                    return "name : {}, age : {}".format(self.name, self.age)
+        from ConfigMaster import Config
+        # Test Class
+        class Test:
+            def __init__(self):
+                self.name = "Donggun LEE"
+                self.age = 24
+            
+            def __str__(self):
+                return "name : {}, age : {}".format(self.name, self.age)
         ```
     - Config None Example
         ```python
-            # Config None Example
-            print("Config None Example")
-            cfg_none = Config()
-            cfg_none.setValue("Version", "0.0.1")
-            cfg_none.setValue("isTemporary", 0)
-            cfg_none.setValue("isUserMode", 1)
+        # Config None Example
+        print("Config None Example")
+        cfg_none = Config()
+        cfg_none.setValue("Version", "0.0.1")
+        cfg_none.setValue("isTemporary", 0)
+        cfg_none.setValue("isUserMode", 1)
 
-            print(cfg_none.isTemporary)
-            """
-                0
-            """
-            print(cfg_none.Version)
-            """
-                0.0.1
-            """
+        print(cfg_none.isTemporary)
+        """
+            0
+        """
+        print(cfg_none.Version)
+        """
+            0.0.1
+        """
 
-            print(cfg_none.toJSON())
-            """
-                {
-                    "Version": "0.0.1",
-                    "isTemporary": 0,
-                    "isUserMode": 1
-                }
-            """
+        print(cfg_none.toJSON())
+        """
+            {
+                "Version": "0.0.1",
+                "isTemporary": 0,
+                "isUserMode": 1
+            }
+        """
 
-            test = Test()
-            print(test)
+        test = Test()
+        print(test)
+        """
+            name : Donggun LEE, age : 24
+        """
+        cfg_none.setValue("name", "LEE Donggun")
+        cfg_none.setObject(test)
+        print(test)
+        """
+            name : LEE Donggun, age : 24
+        """
+        try:
+            print(test.Version)
             """
-                name : Donggun LEE, age : 24
             """
-            cfg_none.setValue("name", "LEE Donggun")
-            cfg_none.setObject(test)
-            print(test)
+        except Exception as e:
+            print(e)
             """
-                name : LEE Donggun, age : 24
-            """
-            try:
-                print(test.Version)
-                """
-                """
-            except Exception as e:
-                print(e)
-                """
-                    'Test' object has no attribute 'Version'
-                """
-
-            print(cfg_none.Version)
-            """
-                0.0.1
+                'Test' object has no attribute 'Version'
             """
 
-            print(cfg_none.toDict()['Version'])
-            """
-                0.0.1
-            """
+        print(cfg_none.Version)
+        """
+            0.0.1
+        """
 
-            cfg_none.toFile("d:/a/b/c/d/e/f/config.json")
+        print(cfg_none.toDict()['Version'])
+        """
+            0.0.1
+        """
+
+        cfg_none.toFile("d:/a/b/c/d/e/f/config.json")
         ```
      - Config Dictionaray Example
         ```python
-            # Config Dictionaray Example
-            print("Config Dictionaray Example")
+        # Config Dictionaray Example
+        print("Config Dictionaray Example")
 
-            cfg_dict = Config({"name":"LEE Donggun", "age":40})
-            print(cfg_dict)
-            """
-                {
-                    "age": 40,
-                    "name": "LEE Donggun"
-                }
-            """
-            test = cfg_dict.newClass(Test)
-            print(test)
-            """
-                name : LEE Donggun, age : 40
-            """
-            cfg_dict.setValue("age",70)
-            cfg_dict.setObject(test)
-            print(test)
-            """
-                name : LEE Donggun, age : 70
-            """
+        cfg_dict = Config({"name":"LEE Donggun", "age":40})
+        print(cfg_dict)
+        """
+            {
+                "age": 40,
+                "name": "LEE Donggun"
+            }
+        """
+        test = cfg_dict.newClass(Test)
+        print(test)
+        """
+            name : LEE Donggun, age : 40
+        """
+        cfg_dict.setValue("age",70)
+        cfg_dict.setObject(test)
+        print(test)
+        """
+            name : LEE Donggun, age : 70
+        """
         ```
      - Config File Example
         ```python
-            # Config File Example
-            print("Config File Example")
-            cfg_file = Config("d:/a/b/c/d/e/f/config.json")
-            print(cfg_file)
-            """
-            {
-                    "Version": "0.0.1",
-                    "isTemporary": 0,
-                    "isUserMode": 1,
-                    "name": "LEE Donggun"
-            }
-            """
+        # Config File Example
+        print("Config File Example")
+        cfg_file = Config("d:/a/b/c/d/e/f/config.json")
+        print(cfg_file)
+        """
+        {
+                "Version": "0.0.1",
+                "isTemporary": 0,
+                "isUserMode": 1,
+                "name": "LEE Donggun"
+        }
+        """
         ```
      - Config Class Example
         ```python
-            # Config Class Example
-            print("Config Class Example")
+        # Config Class Example
+        print("Config Class Example")
 
-            cfg_class = Config(Test)
-            print(cfg_class)
-            """
-                {
-                    "age": 24,
-                    "name": "Donggun LEE"
-                }
-            """
+        cfg_class = Config(Test)
+        print(cfg_class)
+        """
+            {
+                "age": 24,
+                "name": "Donggun LEE"
+            }
+        """
         ```
      - Config Object Example
         ```python
-            # Config Object Example
-            print("Config Object Example")
+        # Config Object Example
+        print("Config Object Example")
 
-            cfg_obj = Config(Test())
-            print(cfg_class)
-            """
-                {
-                    "age": 24,
-                    "name": "Donggun LEE"
-                }
-            """
+        cfg_obj = Config(Test())
+        print(cfg_class)
+        """
+            {
+                "age": 24,
+                "name": "Donggun LEE"
+            }
+        """
         ```
