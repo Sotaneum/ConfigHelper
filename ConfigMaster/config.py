@@ -68,7 +68,7 @@ class ConfigMaster:
         obj = self._get_obj_(obj)
         setattr(obj, key, value)
     
-    def newClass(self, cls):
+    def newObject(self, cls):
         obj = self._get_obj_(cls())
         for key in list(vars(obj).keys()):
             if key in list(vars(self).keys()):

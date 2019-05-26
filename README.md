@@ -30,7 +30,7 @@ Can use it to save or recall preferences from Python.
         return None
 
     # Create New Object. (Init Variable)
-    def newClass(cls:Class):
+    def newObject(cls:Class):
         return Object
 
     # Put a value in Object
@@ -140,7 +140,7 @@ Can use it to save or recall preferences from Python.
                 "name": "LEE Donggun"
             }
         """
-        test = cfg_dict.newClass(Test)
+        test = cfg_dict.newObject(Test)
         print(test)
         """
             name : LEE Donggun, age : 40
