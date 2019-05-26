@@ -8,7 +8,11 @@ Can use it to save or recall preferences from Python.
     ```
     - Other version
         ```bash
-            pip install "http://duration.digimoon.net/pip/configmaster.whl"
+            # 0.0.1
+            pip install "http://duration.digimoon.net/pip/configmaster-0.0.1-cp36-none-any.whl"
+            
+            # 0.0.2
+            pip install "http://duration.digimoon.net/pip/configmaster-0.0.2-cp36-none-any.whl"
         ```
  - Functions
     ```python
