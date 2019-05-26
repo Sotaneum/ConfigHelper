@@ -1,5 +1,5 @@
 ##############################################
-#  2019. 05. 26 ConfigMaster 0.1v
+#  2019. 05. 26 ConfigMaster 0.2v
 #  Can use it to save or recall preferences from Python.
 ##############################################
 
@@ -11,9 +11,17 @@ class ConfigMaster:
             self._from_file_(data)
         elif isinstance(data, dict):
             self._from_dict_(data)
+        elif isinstance(data, type):
+            self._from_obj_(data())
+        elif data is not None:
+            self._from_obj_(data)
 
     def __str__(self):
         return self.toJSON()
+
+    def _from_obj_(self, data):
+        for key in list(vars(data).keys()):
+            self.setValue(key, self.getValue(key, data))
 
     def _from_file_(self, data:str):
         with open(data) as data_file:    
@@ -52,25 +60,31 @@ class ConfigMaster:
             path = path+"/"
         return path
 
-    def getConfig(self, key, obj=None):
+    def getValue(self, key, obj=None):
         obj = self._get_obj_(obj)
         return getattr(obj, key, None)
 
-    def setConfig(self, key, value, obj=None):
+    def setValue(self, key, value, obj=None):
         obj = self._get_obj_(obj)
         setattr(obj, key, value)
     
-    def toClass(self, cls):
-        obj = self._get_obj_(cls)
+    def newClass(self, cls):
+        obj = self._get_obj_(cls())
         for key in list(vars(obj).keys()):
             if key in list(vars(self).keys()):
-                self.setConfig(key, self.getConfig(key), obj)
+                self.setValue(key, self.getValue(key), obj)
         return obj
+
+    def setObject(self, obj):
+        obj = self._get_obj_(obj)
+        for key in list(vars(obj).keys()):
+            if key in list(vars(self).keys()):
+                self.setValue(key, self.getValue(key), obj)
 
     def toDict(self):
         data = {}
         for key in list(vars(self).keys()):
-            data.update({key:self.getConfig(key)})
+            data.update({key:self.getValue(key)})
         return data
     
     def toJSON(self):
