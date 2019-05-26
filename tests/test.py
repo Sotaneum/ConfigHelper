@@ -1,44 +1,5 @@
-# ConfigMaster
-Can use it to save or recall preferences from Python.
- - Copyright (c) 2019 Lee Dong-gun
- - Homepage : http://infolab.kunsan.ac.kr
- - How to install
-  - pip install "http://duration.digimoon.net/pip/configmaster.whl"
-
- - Functions
- ```python
-    config = ConfigMaster(data:dict)
-    config = ConfigMaster(path:str) # URL is not supported.
-
-    # Returns the values.
-    def getConfig(key:str):
-        return Value
-
-    # Modify or add new values. 
-    def setConfig(key:str, value:object):
-        return None
-
-    # Put a value in Class.
-    def toClass(cls:object):
-        return Object
-
-    # Return as "Dictionary".
-    def toDict():
-        return Dictionary
-
-    # Return as "JSON".
-    def toJSON():
-        return String(=JSON)
-
-    # Return as "File".
-    def toFile(path:string):
-        return file
- ```
-
- - How to use
-
-```python
 from ConfigMaster import Config
+
 config = Config()
 config.setConfig("Version", "0.0.1")
 config.setConfig("isTemporary", 0)
@@ -89,4 +50,3 @@ print(config2)
         "name": "LEE Donggun"
 }
 """
-```
