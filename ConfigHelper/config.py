@@ -1,11 +1,11 @@
 ##############################################
-#  2019. 05. 26 ConfigMaster 0.2v
+#  2019. 05. 26 ConfigHelper 0.1v
 #  Can use it to save or recall preferences from Python.
 ##############################################
 
 import json, os
 
-class ConfigMaster:
+class ConfigHelper:
     def __init__(self, data=None):
         if isinstance(data, str):
             self._from_file_(data)

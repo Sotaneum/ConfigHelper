@@ -1,25 +1,21 @@
-# ConfigMaster
+# ConfigHelper
 Can use it to save or recall preferences from Python.
- - Copyright (c) 2019 Lee Dong-gun
- - Homepage : http://infolab.kunsan.ac.kr
+ - Copyright (c) 2019 [InfoLab](http://infolab.kunsan.ac.kr) ([Donggun LEE](http://duration.digimoon.net/))
  - How to install
     ```bash
-    pip install "http://duration.digimoon.net/pip/configmaster.whl"
+    pip install ConfigHelper
     ```
     - Other version
         ```bash
         # 0.0.1
-        pip install "http://duration.digimoon.net/pip/configmaster-0.0.1-cp36-none-any.whl"
-
-        # 0.0.2
-        pip install "http://duration.digimoon.net/pip/configmaster-0.0.2-cp36-none-any.whl"
+        pip install ConfigHelper==0.0.1
         ```
  - Functions
     ```python
-    config = ConfigMaster(data:dict)
-    config = ConfigMaster(path:str) # URL is not supported.
-    config = ConfigMaster(cls:type) # Class
-    config = ConfigMaster(obj) # is not None
+    config = ConfigHelper(data:dict)
+    config = ConfigHelper(path:str) # URL is not supported.
+    config = ConfigHelper(cls:type) # Class
+    config = ConfigHelper(obj) # is not None
 
     # Returns the value.
     def getValue(key:str):
@@ -63,9 +59,9 @@ Can use it to save or recall preferences from Python.
             def __str__(self):
                 return "name : {}, age : {}".format(self.name, self.age)
         ```
-    - Import ConfigMaster
+    - Import ConfigHelper
         ```python
-        from ConfigMaster import Config
+        from ConfigHelper import Config
         ```
     - Config None Example
         ```python

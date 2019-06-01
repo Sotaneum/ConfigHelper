@@ -1,4 +1,4 @@
-from ConfigMaster import Config
+from ConfigHelper import Config
 
 config = Config()
 config.setConfig("Version", "0.0.1")
