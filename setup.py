@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
-setup(name='confighelper',
-      version='0.0.1',
+setup(name='ConfigHelper',
+      version='0.0.2',
       url='https://github.com/Sotaneum/ConfigHelper',
       author='Donggun LEE',
       author_email='gnyotnu39@gmail.com',
