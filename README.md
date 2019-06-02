@@ -7,8 +7,8 @@ Can use it to save or recall preferences from Python.
     ```
     - Other version
         ```bash
-        # 0.0.2
-        pip install ConfigHelper==0.0.2
+        # 0.0.3
+        pip install ConfigHelper==0.0.3
         ```
  - Functions
     ```python

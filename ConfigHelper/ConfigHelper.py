@@ -1,5 +1,5 @@
 ##############################################
-#  2019. 05. 26 ConfigHelper 0.0.2v
+#  2019. 05. 26 ConfigHelper 0.0.3v
 #  Can use it to save or recall preferences from Python.
 ##############################################
 
