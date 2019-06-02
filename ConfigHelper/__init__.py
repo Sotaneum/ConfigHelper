@@ -12,7 +12,7 @@ real_path = os.path.dirname(os.path.abspath(__file__)).replace("\\","/")
 sys.path.append(real_path)
 
 try:
-    from config import ConfigHelper as Config
+    from ConfigHelper import ConfigHelper as Config
 except ImportError as e:
     print(e," 추가할 수 없습니다.")
     exit(1)
